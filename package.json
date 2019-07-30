@@ -1,0 +1,42 @@
+{
+  "name": "pwa-conf-app",
+  "version": "1.0.0",
+  "description": "This is a PWA tutorial app. You can find the tutorial on the [Vaadin website](https://vaadin.com/progressive-web-applications).",
+  "main": "sw.js",
+  "scripts": {
+    "webpack": "webpack --env.mode development",
+    "webpack-dev-server": "webpack-dev-server --history-api-fallback",
+    "prod": "npm run webpack -- --env.mode production --env.presets serviceworker",
+    "dev": "npm run webpack-dev-server -- --env.mode development",
+    "dev:sw": "npm run webpack-dev-server -- --env.mode development  --env.presets serviceworker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaadin-learning-center/lit-element-tutorial-01-starting-a-lit-element-project.git"
+  },
+  "keywords": [],
+  "author": "Marcus Hellberg <marcus@vaadin.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/vaadin-learning-center/lit-element-tutorial-01-starting-a-lit-element-project/issues"
+  },
+  "homepage": "https://github.com/vaadin-learning-center/lit-element-tutorial-01-starting-a-lit-element-project#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "latest",
+    "copy-webpack-plugin": "latest",
+    "css-loader": "latest",
+    "html-webpack-plugin": "latest",
+    "mini-css-extract-plugin": "latest",
+    "style-loader": "latest",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest",
+    "webpack-merge": "latest"
+  },
+  "dependencies": {
+    "lit-element": "latest",
+    "@webcomponents/webcomponentsjs": "latest"
+  }
+}
