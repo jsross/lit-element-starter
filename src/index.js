@@ -1,3 +1,3 @@
 import './styles.css';
-import './components/todo-list/index.ts';
-import './components/todo-item/index.ts';
+import './components/todo-list/todo-list.ts';
+import './components/todo-item/todo-item.ts';

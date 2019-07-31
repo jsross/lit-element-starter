@@ -63,6 +63,12 @@ module.exports = ({ mode, presets }) => {
       module: {
         rules: [
           {
+            test: /\.(html)$/,
+            use: {
+              loader: 'html-loader'
+            }
+          },
+          {
             test: /\.tsx?$/,
             use: 'ts-loader',
             exclude: /node_modules/
