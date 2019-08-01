@@ -2,12 +2,12 @@
     "compilerOptions": {
       "outDir": "./dist/",
       "noImplicitAny": true,
-      "module": "es6",
+      "module": "CommonJS",
       "target": "es6",
       "jsx": "react",
       "allowJs": true,
       "sourceMap": true,
-      "typeRoots": ["./typings"],
+      "typeRoots": ["./node_modules/@types", "./typings", ],
       "experimentalDecorators": true
     }
   }

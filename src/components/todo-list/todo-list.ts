@@ -1,3 +1,4 @@
+import * as ts from "typescript";
 import {
   LitElement, html, customElement, property
 } from 'lit-element';
@@ -6,10 +7,16 @@ import {TodoItem} from '../todo-item/todo-item.js';
 
 export class TodoList extends LitElement {
   render() {
-    const stringArray = [`${view}`] as any;
-    stringArray.raw = [`${view}`];
+    return this.getTemplate();
+  }
 
-    return html(stringArray as TemplateStringsArray);
+  getTemplate(){
+    let code: string = 'lit_element_1.html`' + view + "`";
+    let jsCode: string = ts.transpile(code);
+
+    var result = eval(jsCode);
+
+    return result;
   }
 }
 
