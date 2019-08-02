@@ -1,21 +1,22 @@
 import * as ts from "typescript";
 import { LitElement, html, customElement, property } from 'lit-element';
-import * as view from "./template.html"
+import * as view from "./template.html";
 
 @customElement('todo-item')
-export class TodoItem extends LitElement {
+export class TodoItemElement extends LitElement {
   @property()
-  foo = 'foo';
+  foo: string = "bar";
 
   render() {
-    return this.getTemplate();
+    return this.getTemplateResult();
   }
 
-  getTemplate(){
-    let code: string = 'lit_element_1.html`' + view + "`";
-    let jsCode: string = ts.transpile(code);
+  getTemplateResult(){
+    var tag = html;
 
-    var result = eval(jsCode);
+    let code: string = 'tag`' + view + "`";
+
+    var result = eval(code);
 
     return result;
   }

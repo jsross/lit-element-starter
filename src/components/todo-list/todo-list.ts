@@ -3,18 +3,56 @@ import {
   LitElement, html, customElement, property
 } from 'lit-element';
 import * as view from "./template.html"
-import {TodoItem} from '../todo-item/todo-item.js';
+import {TodoItemElement} from '../todo-item/todo-item.js';
+
+const VisibilityFilters = { 
+  SHOW_ALL: 'All',
+  SHOW_ACTIVE: 'Active',
+  SHOW_COMPLETED: 'Completed'
+};
 
 export class TodoList extends LitElement {
-  render() {
-    return this.getTemplate();
+  @property()
+  todos: Array<string> = ['First', 'Second'];
+
+  @property()
+  filter: string = VisibilityFilters.SHOW_ALL;
+
+  @property()
+  task: string = '';
+
+  html:any;
+
+  constructor(){
+    super();
+
+    this.html = html;
   }
 
-  getTemplate(){
-    let code: string = 'lit_element_1.html`' + view + "`";
-    let jsCode: string = ts.transpile(code);
+  private _handleClick(event: any) {
+    alert("Click");
+    this.todos.push(this.task);
+  }
 
-    var result = eval(jsCode);
+  private _handleKeyUp_taskInput(event: any) {
+    console.log(event.key);
+  }
+
+  private _handleChange_taskInput(event: any) {
+    console.log('Change!!');
+    this.task = event.target.value;
+  }
+
+  render() {
+    return this.getTemplateResult();
+  }
+
+  getTemplateResult(){
+    var tag = html;
+
+    let code: string = 'tag`' + view + "`";
+
+    var result = eval(code);
 
     return result;
   }

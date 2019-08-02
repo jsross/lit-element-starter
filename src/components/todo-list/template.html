@@ -1,4 +1,18 @@
+<input type='text'
+       value=${this.task}
+       @keyup="${this._handleKeyUp_taskInput}"
+       @change=${this._handleChange_taskInput}/>
+
+<button @click=${this._handleClick}>Add</button>
+
 <ul>
-    <li><todo-item></todo-item></li>
-    <li><todo-item></todo-item></li>
+    ${this.todos.map(
+        todo => this.html` 
+            <li>
+                ${todo}
+            </li>
+            </div>
+        `
+        )
+    }
 </ul>
