@@ -31,6 +31,9 @@ export class TodoList extends LitElement {
 
   private _handleClick(event: any) {
     this.Todos.push({Task: this.Task, IsComplete: false});
+    this.Task = '';
+
+    this.requestUpdate();
   }
 
   private _handleKeyUp_taskInput(event: any) : void {
