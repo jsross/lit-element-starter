@@ -14,33 +14,33 @@ const VisibilityFilters = {
 
 export class TodoList extends LitElement {
   @property()
-  todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
+  Todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
 
   @property()
-  filter: string = VisibilityFilters.SHOW_ALL;
+  Filter: string = VisibilityFilters.SHOW_ALL;
 
   @property()
-  task: string = '';
+  Task: string = '';
 
-  html:any;
+  private _html: any;
 
   constructor(){
     super();
-
-    this.html = html;
+    this._html = html;
   }
 
   private _handleClick(event: any) {
-    this.todos.push({Task: this.task, IsComplete: false});
+    this.Todos.push({Task: this.Task, IsComplete: false});
   }
 
-  private _handleKeyUp_taskInput(event: any) {
-    console.log(event.key);
+  private _handleKeyUp_taskInput(event: any) : void {
+    console.debug('_handleKeyUp_taskInput() ' + event.key);
   }
 
   private _handleChange_taskInput(event: any) {
-    console.log('Change!!');
-    this.task = event.target.value;
+    console.debug('_handleChange_taskInput()');
+
+    this.Task = event.target.value;
   }
 
   render() {
@@ -48,9 +48,7 @@ export class TodoList extends LitElement {
   }
 
   getTemplateResult(){
-    var tag = html;
-
-    let code: string = 'tag`' + view + "`";
+    let code: string = 'this._html`' + view + "`";
 
     var result = eval(code);
 
