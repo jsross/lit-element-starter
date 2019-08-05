@@ -12,12 +12,11 @@ const VisibilityFilters = {
 };
 
 export class TodoList extends LitElement {
+
   @property()
   Todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
-
   @property()
   Filter: string = VisibilityFilters.SHOW_ALL;
-
   @property()
   Task: string = '';
 
