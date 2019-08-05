@@ -1,4 +1,3 @@
-import * as ts from "typescript";
 import {
   LitElement, html, customElement, property
 } from 'lit-element';
