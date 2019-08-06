@@ -1,7 +1,12 @@
+<style>
+    li {
+        list-style:none;
+    }
+</style>
 <input type='text'
        .value=${this.Task}
        @keyup="${this._handleKeyUp_taskInput}"
-       @change='${this._handleChange}'/>
+       @change='${this._handleChange_taskInput}'/>
 
 <button @click=${this._handleClick}>Add</button>
 
@@ -9,7 +14,8 @@
 ${this.Todos.map(
     todo => this._html` 
         <li>
-            <todo-item .model=${todo}></todo-item>
+            <todo-item .value=${todo}
+                        @change=${this._handleChange_todoItem}></todo-item>
         </li>
     `
     )

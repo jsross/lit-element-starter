@@ -1,1 +1,5 @@
-<span>${this.model.Task}</span>
+<input type="checkbox"
+       ?checked="${this.value.IsComplete}"
+       @change=${this._handleChange}/>
+
+<span>${this.value.Task}</span>

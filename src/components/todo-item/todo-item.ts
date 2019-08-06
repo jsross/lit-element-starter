@@ -5,8 +5,8 @@ import {TodoItem} from "../../models/todo-item"
 @customElement('todo-item')
 export class TodoItemElement extends LitElement {
   
-  @property()
-  Model: TodoItem = null;
+  @property({type: Object})
+  value: TodoItem = null;
 
   private _html: any;
 
@@ -19,12 +19,22 @@ export class TodoItemElement extends LitElement {
     return this.getTemplateResult();
   }
 
-  getTemplateResult(){
+  private getTemplateResult(){
     let code: string = 'this._html`' + view + "`";
 
     var result = eval(code);
 
     return result;
+  }
+
+  private _handleChange(event: Event) {
+    var target = event.target as HTMLInputElement;
+    
+    this.value.IsComplete = target.checked;
+
+    var changEvent = new Event('change');
+
+    this.dispatchEvent(changEvent);
   }
 
 }

@@ -34,10 +34,24 @@ export class TodoList extends LitElement {
     this.Task = '';
 
     this.requestUpdate();
+
+    var changEvent = new Event('change');
+
+    this.dispatchEvent(changEvent);
   }
 
-  private _handleChange(event: any){
-    this.Task = event.target.value;
+  private _handleChange_taskInput(event: Event){
+    var target = event.target as HTMLInputElement;
+
+    this.Task = target.value;
+  }
+
+  private _handleChange_todoItem(event: Event) {
+    console.log(event);
+
+    var changEvent = new Event('change');
+
+    this.dispatchEvent(changEvent);
   }
 
   private _handleClick(event: any) {
@@ -54,7 +68,7 @@ export class TodoList extends LitElement {
     return this.getTemplateResult();
   }
 
-  getTemplateResult(){
+  private getTemplateResult(){
     let code: string = 'this._html`' + view + "`";
 
     var result = eval(code);
