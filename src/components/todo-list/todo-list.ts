@@ -13,11 +13,13 @@ const VisibilityFilters = {
 
 export class TodoList extends LitElement {
 
-  @property()
+  @property({type: Array})
   Todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
-  @property()
+
+  @property({type: String})
   Filter: string = VisibilityFilters.SHOW_ALL;
-  @property()
+  
+  @property({type: String})
   Task: string = '';
 
   private _html: any;
@@ -27,20 +29,24 @@ export class TodoList extends LitElement {
     this._html = html;
   }
 
-  public addTodo(task:string){
-    this.Todos.push({Task: task, IsComplete: false});
+  public _addCurrentTask(){
+    this.Todos.push({Task: this.Task, IsComplete: false});
+    this.Task = '';
+
     this.requestUpdate();
   }
 
+  private _handleChange(event: any){
+    this.Task = event.target.value;
+  }
+
   private _handleClick(event: any) {
-    this.addTodo(this.Task);
-    this.Task = '';
+    this._addCurrentTask();
   }
 
   private _handleKeyUp_taskInput(event: any) : void {
     if(event.key === "Enter"){
-      this.addTodo(this.Task);
-      this.Task = '';
+      this._addCurrentTask();
     }
   }
 

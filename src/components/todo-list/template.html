@@ -1,6 +1,7 @@
 <input type='text'
        .value=${this.Task}
-       @keyup="${this._handleKeyUp_taskInput}"/>
+       @keyup="${this._handleKeyUp_taskInput}"
+       @change='${this._handleChange}'/>
 
 <button @click=${this._handleClick}>Add</button>
 
