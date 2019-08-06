@@ -27,21 +27,21 @@ export class TodoList extends LitElement {
     this._html = html;
   }
 
-  private _handleClick(event: any) {
-    this.Todos.push({Task: this.Task, IsComplete: false});
-    this.Task = '';
-
+  public addTodo(task:string){
+    this.Todos.push({Task: task, IsComplete: false});
     this.requestUpdate();
   }
 
-  private _handleKeyUp_taskInput(event: any) : void {
-    console.debug('_handleKeyUp_taskInput() ' + event.key);
+  private _handleClick(event: any) {
+    this.addTodo(this.Task);
+    this.Task = '';
   }
 
-  private _handleChange_taskInput(event: any) {
-    console.debug('_handleChange_taskInput()');
-
-    this.Task = event.target.value;
+  private _handleKeyUp_taskInput(event: any) : void {
+    if(event.key === "Enter"){
+      this.addTodo(this.Task);
+      this.Task = '';
+    }
   }
 
   render() {
