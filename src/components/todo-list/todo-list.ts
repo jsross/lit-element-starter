@@ -5,12 +5,7 @@ import * as view from "./template.html"
 import {TodoItemElement} from '../todo-item/todo-item.js';
 import {TodoItem} from '../../models/todo-item';
 
-const VisibilityFilters = { 
-  SHOW_ALL: 'All',
-  SHOW_ACTIVE: 'Active',
-  SHOW_COMPLETED: 'Completed'
-};
-
+@customElement('todo-list')
 export class TodoList extends LitElement {
 
   @property({type: Array})
@@ -48,5 +43,3 @@ export class TodoList extends LitElement {
     return result;
   }
 }
-
-customElements.define('todo-list', TodoList);
