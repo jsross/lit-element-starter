@@ -1,8 +1,7 @@
 {
-  "name": "pwa-conf-app",
+  "name": "todo-app",
   "version": "1.0.0",
-  "description": "This is a PWA tutorial app. You can find the tutorial on the [Vaadin website](https://vaadin.com/progressive-web-applications).",
-  "main": "sw.js",
+  "description": "Lit element example app",
   "scripts": {
     "build": "npm run webpack -- --env.mode development",
     "webpack": "webpack",
@@ -10,17 +9,8 @@
     "prod": "npm run webpack -- --env.mode production --env.presets serviceworker",
     "dev": "npm run webpack-dev-server -- --env.mode development"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vaadin-learning-center/lit-element-tutorial-01-starting-a-lit-element-project.git"
-  },
   "keywords": [],
-  "author": "Marcus Hellberg <marcus@vaadin.com>",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/vaadin-learning-center/lit-element-tutorial-01-starting-a-lit-element-project/issues"
-  },
-  "homepage": "https://github.com/vaadin-learning-center/lit-element-tutorial-01-starting-a-lit-element-project#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
