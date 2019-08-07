@@ -1,17 +1,15 @@
 <style>
+    ul {
+        margin: 0;
+        padding: 0;
+    }
     li {
         list-style:none;
     }
 </style>
-<input type='text'
-       .value=${this.Task}
-       @keyup="${this._handleKeyUp_taskInput}"
-       @change='${this._handleChange_taskInput}'/>
-
-<button @click=${this._handleClick}>Add</button>
 
 <ul>
-${this.Todos.map(
+${this._todos.map(
     todo => this._html` 
         <li>
             <todo-item .value=${todo}

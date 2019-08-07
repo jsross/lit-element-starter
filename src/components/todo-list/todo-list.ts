@@ -14,13 +14,7 @@ const VisibilityFilters = {
 export class TodoList extends LitElement {
 
   @property({type: Array})
-  Todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
-
-  @property({type: String})
-  Filter: string = VisibilityFilters.SHOW_ALL;
-  
-  @property({type: String})
-  Task: string = '';
+  private _todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
 
   private _html: any;
 
@@ -29,21 +23,9 @@ export class TodoList extends LitElement {
     this._html = html;
   }
 
-  public _addCurrentTask(){
-    this.Todos.push({Task: this.Task, IsComplete: false});
-    this.Task = '';
-
+  public addTask(value: string) {
+    this._todos.push({Task: value, IsComplete: false});
     this.requestUpdate();
-
-    var changEvent = new Event('change');
-
-    this.dispatchEvent(changEvent);
-  }
-
-  private _handleChange_taskInput(event: Event){
-    var target = event.target as HTMLInputElement;
-
-    this.Task = target.value;
   }
 
   private _handleChange_todoItem(event: Event) {
@@ -52,16 +34,6 @@ export class TodoList extends LitElement {
     var changEvent = new Event('change');
 
     this.dispatchEvent(changEvent);
-  }
-
-  private _handleClick(event: any) {
-    this._addCurrentTask();
-  }
-
-  private _handleKeyUp_taskInput(event: any) : void {
-    if(event.key === "Enter"){
-      this._addCurrentTask();
-    }
   }
 
   render() {
@@ -77,4 +49,4 @@ export class TodoList extends LitElement {
   }
 }
 
-customElements.define('todo-view', TodoList);
+customElements.define('todo-list', TodoList);
