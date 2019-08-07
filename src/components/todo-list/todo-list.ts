@@ -58,8 +58,6 @@ export class TodoList extends LitElement {
     this.dispatchEvent(changEvent);
   }
 
-
-
   private __getTemplateResult(){
     let code: string = 'this._html`' + view + "`";
 
