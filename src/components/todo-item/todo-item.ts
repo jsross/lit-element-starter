@@ -19,6 +19,12 @@ export class TodoItemElement extends LitElement {
     return this.__getTemplateResult();
   }
 
+  public updated() {
+    var checkbox = this.shadowRoot.getElementById('is-complete-checkbox') as HTMLInputElement;
+
+    checkbox.checked = this.value.isComplete;
+  }
+
   private _handleChange(event: Event) {
     var target = event.target as HTMLInputElement;
     

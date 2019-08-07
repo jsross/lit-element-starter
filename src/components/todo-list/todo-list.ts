@@ -39,8 +39,10 @@ export class TodoList extends LitElement {
 
   private _handleClick_delete(todo: TodoItem, event: Event) {
     var index = this._todos.indexOf(todo);
-
-    this._todos.splice(index, 1);
+    
+    this._todos = this._todos.filter(function(val, i){
+      return i !== index;
+    });
 
     this.requestUpdate();
     this._sendChangEvent();
