@@ -32,9 +32,23 @@ export class TodoList extends LitElement {
     this.requestUpdate();
   }
 
+  private _handleClick_delete(todo: TodoItem, event: Event) {
+    var index = this._todos.indexOf(todo);
+
+    this._todos.splice(index, 1);
+
+    this.requestUpdate();
+
+    this._sendChangEvent();
+  }
+
   private _handleChange_todoItem(event: Event) {
     console.log(event);
 
+    this._sendChangEvent();
+  }
+
+  private _sendChangEvent(){
     var changEvent = new Event('change');
 
     this.dispatchEvent(changEvent);
