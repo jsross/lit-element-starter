@@ -4,12 +4,13 @@ import {
 import * as view from "./template.html"
 import {TodoItemElement} from '../todo-item/todo-item.js';
 import {TodoItem} from '../../models/todo-item';
+var cloneDeep = require('lodash.clonedeep');
 
 @customElement('todo-list')
 export class TodoList extends LitElement {
 
   @property({type: Array})
-  private _todos: Array<TodoItem> = [{Task: 'Task 1', IsComplete: false}];
+  private _todos: Array<TodoItem> = [];
 
   private _html: any;
 
@@ -18,8 +19,16 @@ export class TodoList extends LitElement {
     this._html = html;
   }
 
+  get value(): Array<TodoItem> {
+    return cloneDeep(this._todos);
+  }
+
+  set value(value: Array<TodoItem>) {
+      this._todos = cloneDeep(value);
+  }
+
   public addTask(value: string) {
-    this._todos.push({Task: value, IsComplete: false});
+    this._todos.push({task: value, isComplete: false});
     this.requestUpdate();
   }
 

@@ -4,7 +4,7 @@
   "description": "This is a PWA tutorial app. You can find the tutorial on the [Vaadin website](https://vaadin.com/progressive-web-applications).",
   "main": "sw.js",
   "scripts": {
-    "build-dev": "npm run webpack -- --env.mode development",
+    "build": "npm run webpack -- --env.mode development",
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server --history-api-fallback",
     "prod": "npm run webpack -- --env.mode production --env.presets serviceworker",
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "lit-element": "^2.2.1"
+    "lit-element": "^2.2.1",
+    "lodash.clonedeep": "^4.5.0"
   }
 }

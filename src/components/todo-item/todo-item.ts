@@ -30,7 +30,7 @@ export class TodoItemElement extends LitElement {
   private _handleChange(event: Event) {
     var target = event.target as HTMLInputElement;
     
-    this.value.IsComplete = target.checked;
+    this.value.isComplete = target.checked;
 
     var changEvent = new Event('change');
 

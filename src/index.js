@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var addButton = document.getElementById('add-button');
     var todoListElement = document.getElementById('todo-list');
 
+    todoListElement.value = [
+                                {task: 'Task 1', isComplete: false},
+                                {task: 'Task 2', isComplete: false}
+                            ];
+
     addButton.addEventListener("click", function(){
         todoListElement.addTask(inputElement.value);
         inputElement.value = '';
@@ -20,7 +25,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
     });
 
     todoListElement.addEventListener("change", function(){
-        console.log('Changed');
+        var value = todoListElement.value;
+
+        console.log(todoListElement.value);
     });
 
 });
