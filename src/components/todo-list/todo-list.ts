@@ -29,7 +29,12 @@ export class TodoList extends LitElement {
 
   public addTask(value: string) {
     this._todos.push({task: value, isComplete: false});
+
     this.requestUpdate();
+  }
+
+  public render() {
+    return this.__getTemplateResult();
   }
 
   private _handleClick_delete(todo: TodoItem, event: Event) {
@@ -38,7 +43,6 @@ export class TodoList extends LitElement {
     this._todos.splice(index, 1);
 
     this.requestUpdate();
-
     this._sendChangEvent();
   }
 
@@ -54,11 +58,9 @@ export class TodoList extends LitElement {
     this.dispatchEvent(changEvent);
   }
 
-  render() {
-    return this.getTemplateResult();
-  }
 
-  private getTemplateResult(){
+
+  private __getTemplateResult(){
     let code: string = 'this._html`' + view + "`";
 
     var result = eval(code);

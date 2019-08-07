@@ -15,16 +15,8 @@ export class TodoItemElement extends LitElement {
     this._html = html;
   }
 
-  render() {
-    return this.getTemplateResult();
-  }
-
-  private getTemplateResult(){
-    let code: string = 'this._html`' + view + "`";
-
-    var result = eval(code);
-
-    return result;
+  public render() {
+    return this.__getTemplateResult();
   }
 
   private _handleChange(event: Event) {
@@ -35,6 +27,14 @@ export class TodoItemElement extends LitElement {
     var changEvent = new Event('change');
 
     this.dispatchEvent(changEvent);
+  }
+
+  private __getTemplateResult(){
+    let code: string = 'this._html`' + view + "`";
+
+    var result = eval(code);
+
+    return result;
   }
 
 }
