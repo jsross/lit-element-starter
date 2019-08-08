@@ -14,7 +14,7 @@ const _repeat = repeat;
 export class TodoList extends LitElement {
 
   @property({type: Array})
-  private _todos: Array<TodoItem> = [];
+  private _todoWrappers: Array<ItemWrapper> = [];
 
   private _html: any;
   private _repeat: any;
@@ -24,21 +24,42 @@ export class TodoList extends LitElement {
   }
 
   get value(): Array<TodoItem> {
-    return cloneDeep(this._todos);
+    var result: Array<TodoItem> = [];
+
+    this._todoWrappers.forEach(function(item){
+      result.push(cloneDeep(item.model));
+    }, this);
+
+    return result;
   }
 
   set value(value: Array<TodoItem>) {
-      this._todos = cloneDeep(value);
+    this._todoWrappers = [];
+
+    value.forEach(function(item){
+      var model: TodoItem = cloneDeep(item);
+
+      var wrapper = {
+        id: uuidv1(),
+        model: model
+      }
+      
+      this._todoWrappers.push(wrapper);
+    }, this);
   }
 
   public addTask(value: string) {
-    var item = {
-      id: uuidv1(),
+    var model: TodoItem = {
       task: value,
       isComplete: false
-    };
+    }
 
-    this._todos.push(item);
+    var wrapper: ItemWrapper = {
+      id: uuidv1(),
+      model: model
+    }
+
+    this._todoWrappers.push(wrapper);
 
     this.requestUpdate();
   }
@@ -47,10 +68,10 @@ export class TodoList extends LitElement {
     return this.__getTemplateResult();
   }
 
-  private _handleClick_delete(todo: TodoItem, event: Event) {
-    var index = this._todos.indexOf(todo);
+  private _handleClick_delete(wrapper: ItemWrapper, event: Event) {
+    var index = this._todoWrappers.indexOf(wrapper);
     
-    this._todos = this._todos.filter(function(val, i){
+    this._todoWrappers = this._todoWrappers.filter(function(val, i){
       return i !== index;
     });
 
@@ -77,4 +98,9 @@ export class TodoList extends LitElement {
 
     return result;
   }
+}
+
+interface ItemWrapper {
+  id: string;
+  model: TodoItem;
 }
