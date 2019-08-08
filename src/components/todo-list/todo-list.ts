@@ -3,10 +3,12 @@ import {
 } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat.js';
 import * as view from "./template.html"
-import {TodoItemElement} from '../todo-item/todo-item.js';
 import {TodoItem} from '../../models/todo-item';
 const cloneDeep = require('lodash.clonedeep');
 const uuidv1 = require('uuid/v1');
+
+const _html = html;
+const _repeat = repeat;
 
 @customElement('todo-list')
 export class TodoList extends LitElement {
@@ -19,8 +21,6 @@ export class TodoList extends LitElement {
 
   constructor(){
     super();
-    this._html = html;
-    this._repeat = repeat;
   }
 
   get value(): Array<TodoItem> {
@@ -71,7 +71,7 @@ export class TodoList extends LitElement {
   }
 
   private __getTemplateResult(){
-    let code: string = 'this._html`' + view + "`";
+    let code: string = '_html`' + view + "`";
 
     var result = eval(code);
 

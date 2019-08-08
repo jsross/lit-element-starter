@@ -9,7 +9,7 @@
 </style>
 
 <ul>
-${this._repeat(this._todos, (todo) => todo.id, (todo, index) => this._html`
+${_repeat(this._todos, (todo) => todo.id, (todo, index) => _html`
     <li>
         <todo-item .value=${todo}
                     @change=${this._handleChange_todoItem}></todo-item>

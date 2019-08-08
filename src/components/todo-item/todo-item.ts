@@ -1,6 +1,7 @@
 import { LitElement, html, customElement, property } from 'lit-element';
 import * as view from "./template.html";
 import {TodoItem} from "../../models/todo-item"
+const _html = html;
 
 @customElement('todo-item')
 export class TodoItemElement extends LitElement {
@@ -12,7 +13,6 @@ export class TodoItemElement extends LitElement {
 
   constructor(){
     super();
-    this._html = html;
   }
 
   public render() {
@@ -30,7 +30,7 @@ export class TodoItemElement extends LitElement {
   }
 
   private __getTemplateResult(){
-    let code: string = 'this._html`' + view + "`";
+    let code: string = '_html`' + view + "`";
 
     var result = eval(code);
 
