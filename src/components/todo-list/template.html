@@ -9,15 +9,12 @@
 </style>
 
 <ul>
-${this._todos.map(
-    todo => this._html` 
-        <li>
-            <todo-item .value=${todo}
-                        @change=${this._handleChange_todoItem}></todo-item>
+${this._repeat(this._todos, (todo) => todo.id, (todo, index) => this._html`
+    <li>
+        <todo-item .value=${todo}
+                    @change=${this._handleChange_todoItem}></todo-item>
 
-            <button @click=${this._handleClick_delete.bind(this, todo)}>Delete</button>
-        </li>
-    `
-    )
-}
+        <button @click=${this._handleClick_delete.bind(this, todo)}>Delete</button>
+    </li>
+`)}
 </ul>

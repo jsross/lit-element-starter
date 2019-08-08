@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var todoListElement = document.getElementById('todo-list');
 
     todoListElement.value = [
-                                {task: 'Task 1', isComplete: false},
-                                {task: 'Task 2', isComplete: false}
+                                {id: 1, task: 'Task 1', isComplete: false},
+                                {id: 2, task: 'Task 2', isComplete: false}
                             ];
 
     addButton.addEventListener("click", function(){

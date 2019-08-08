@@ -1,10 +1,12 @@
 import {
   LitElement, html, customElement, property
 } from 'lit-element';
+import { repeat } from 'lit-html/directives/repeat.js';
 import * as view from "./template.html"
 import {TodoItemElement} from '../todo-item/todo-item.js';
 import {TodoItem} from '../../models/todo-item';
-var cloneDeep = require('lodash.clonedeep');
+const cloneDeep = require('lodash.clonedeep');
+const uuidv1 = require('uuid/v1');
 
 @customElement('todo-list')
 export class TodoList extends LitElement {
@@ -13,10 +15,12 @@ export class TodoList extends LitElement {
   private _todos: Array<TodoItem> = [];
 
   private _html: any;
+  private _repeat: any;
 
   constructor(){
     super();
     this._html = html;
+    this._repeat = repeat;
   }
 
   get value(): Array<TodoItem> {
@@ -28,7 +32,13 @@ export class TodoList extends LitElement {
   }
 
   public addTask(value: string) {
-    this._todos.push({task: value, isComplete: false});
+    var item = {
+      id: uuidv1(),
+      task: value,
+      isComplete: false
+    };
+
+    this._todos.push(item);
 
     this.requestUpdate();
   }
